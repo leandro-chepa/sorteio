@@ -75,3 +75,17 @@ function sortearRestaurante(){
         "🍽️ " + aleatorio(restaurante);
 
 }
+
+function sortearSerie(){
+
+    document.getElementById("serie").innerHTML =
+        "📺 " + aleatorio(seriess);
+
+}
+
+function sortearLivro(){
+
+    document.getElementById("livro").innerHTML =
+        "📚 " + aleatorio(livros);
+
+}

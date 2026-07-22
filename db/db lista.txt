@@ -25,6 +25,8 @@ ativo BOOLEAN DEFAULT 1,
 vezes_sorteado INTEGER DEFAULT 0
 );
 
+Tabela Restaurante 
+
 CREATE TABLE restaurante(
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 nome TEXT NOT NULL,
@@ -32,7 +34,27 @@ ativo BOOLEAN DEFAULT 1,
 vezes_sorteado INTEGER DEFAULT 0
 );
 
-CREATE TABLE historico (
+Tabela Lugares
+
+CREATE TABLE lugares(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+nome TEXT NOT NULL,
+ativo BOOLEAN DEFAULT 1,
+vezes_sorteado INTEGER DEFAULT 0
+);
+
+Tabela Serie 
+
+CREATE TABLE serie(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+nome TEXT NOT NULL,
+ativo BOOLEAN DEFAULT 1,
+vezes_sorteado INTEGER DEFAULT 0
+);
+
+Tabela Livro
+
+CREATE TABLE livro (
 id INTEGER PRIMARY KEY AUTOINCREMENT,
 data_sorteio DATETIME DEFAULT CURRENT_TIMESTAMP,
 categoria TEXT NOT NULL,
