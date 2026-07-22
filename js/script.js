@@ -31,6 +31,17 @@ const lugares = [
     "Casa de amigos"
 ];
 
+const restaurantes = [
+    "Pizzaria",
+    "Hambúrgueria",
+    "Sushi Bar",
+    "Restaurante Italiano",
+    "Churrascaria",
+    "Pastelaria",
+    "Yakisoba House",
+    "Açaí Delícia"
+];
+
 function aleatorio(lista){
 
     return lista[Math.floor(Math.random()*lista.length)];
@@ -55,5 +66,12 @@ function sortearLugar(){
 
     document.getElementById("lugar").innerHTML =
         "📍 " + aleatorio(lugares);
+
+}
+
+function sortearRestaurante(){
+
+    document.getElementById("restaurante").innerHTML =
+        "🍽️ " + aleatorio(restaurante);
 
 }

@@ -6,57 +6,206 @@
     <title>Sorteador de Rolê</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+
 </head>
 
 <body>
 
-<div class="container">
+<div class="topo">
+    <h1>🎲 Sorteador Inteligente</h1>
+</div>
 
-    <h1>🎲 Sorteador de Rolê</h1>
+<div class="cards">
+    <div class="container">
 
-    <div class="resultado">
+        <h1>🎲 Sortear Filme</h1>
 
-        <h2 id="filme">🎬 ???</h2>
+        <div class="resultado">
+
+            <h2 id="filme">🎬 ???</h2>
+
+        </div>
+
+        <button onclick="sortearFilme()">
+            Sortear Agora
+        </button>
+
+    </div>
+    <div class="container">
+
+        <h1>🎲 Sortear Comida</h1>
+
+        <div class="resultado">
+
+            <h2 id="comida">🍕 ???</h2>
+
+        </div>
+
+        <button onclick="sortearComida()">
+            Sortear Agora
+        </button>
+
+    </div>
+</div>
+<div class="cards">   
+    <div class="container">
+
+        <h1>🎲 Sortear Lugar</h1>
+
+        <div class="resultado">
+
+            <h2 id="lugar">📍 ???</h2>
+
+        </div>
+
+        <button onclick="sortearLugar()">
+            Sortear Agora
+        </button>
+
+    </div>
+    <div class="container">
+
+        <h1>🎲 Sortear Restarante</h1>
+
+        <div class="resultado">
+
+            <h2 id="restaurante">🍽️ ???</h2>
+
+        </div>
+
+        <button onclick="sortearRestaurante()">
+            Sortear Agora
+        </button>
+
+    </div>
+</div>
+
+<section class="historico">
+
+    <h2>📋 Últimos Sorteios</h2>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Categoria</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+
+        <tbody id="tabelaHistorico">
+
+            <tr>
+                <td>22/07/2026 10:30</td>
+                <td>Filme</td>
+                <td>Interestelar</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<div class="cards">   
+
+    <div class="">
+
+        <button  onclick="abrirModal('Filme')">
+            Cadastrar Filme
+        </button>
 
     </div>
 
-    <button onclick="sortearFilme()">
-        Sortear Agora
-    </button>
+    <div class="">
+
+        <button  onclick="abrirModal('Comida')">
+            Cadastrar Comida
+        </button>
+
+    </div>
+
+    <div class="">
+
+        <button onclick="abrirModal('Lugar')">
+            Cadastrar Lugar
+        </button>
+
+    </div>
+
+    <div class="">
+
+        <button onclick="abrirModal('Restaurante')">
+            Cadastrar Restaurante
+        </button>
+
+    </div>
 
 </div>
-<div class="container">
 
-    <h1>🎲 Sorteador de Rolê</h1>
+<footer>
+    <p>© 2026 Sorteador Inteligente</p>
+    <p>Desenvolvido por Leandro Benitti</p>
+    <p>Versão 1.0.0</p>
+</footer>
 
-    <div class="resultado">
+<div id="modalCadastro" class="modal">
 
-        <h2 id="comida">🍕 ???</h2>
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2 id="tituloModal">
+                Cadastro
+            </h2>
+
+            <span class="fechar" onclick="fecharModal()">
+                &times;
+            </span>
+
+        </div>
+
+        <div class="modal-body">
+
+            <label for="txtNome">
+                Nome
+            </label>
+
+            <input
+                type="text"
+                id="txtNome"
+                placeholder="Digite o nome">
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button
+                class="btnCancelar"
+                onclick="fecharModal()">
+
+                Cancelar
+
+            </button>
+
+            <button
+                class="btnSalvar"
+                onclick="salvarCadastro()">
+
+                Salvar
+
+            </button>
+
+        </div>
 
     </div>
-
-    <button onclick="sortearComida()">
-        Sortear Agora
-    </button>
-
-</div>
-<div class="container">
-
-    <h1>🎲 Sorteador de Rolê</h1>
-
-    <div class="resultado">
-
-        <h2 id="lugar">📍 ???</h2>
-
-    </div>
-
-    <button onclick="sortearLugar()">
-        Sortear Agora
-    </button>
 
 </div>
 
 <script src="js/script.js"></script>
+<script src="js/modal.js"></script>
 
 </body>
 </html>

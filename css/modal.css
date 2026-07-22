@@ -1,0 +1,144 @@
+/* Fundo do modal */
+.modal{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:rgba(0,0,0,.6);
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:1000;
+}
+
+/* Caixa do modal */
+.modal-content{
+
+    background:#FFFFFF;
+
+    width:450px;
+
+    border-radius:12px;
+
+    padding:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    position:relative;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.3);
+}
+
+/* Cabeçalho */
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.modal-header h2{
+
+    margin:0;
+}
+
+/* Botão fechar */
+
+.fechar{
+
+    font-size:30px;
+
+    cursor:pointer;
+
+    color:#888;
+}
+
+.fechar:hover{
+
+    color:red;
+}
+
+/* Corpo */
+
+.modal-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.modal-body label{
+
+    font-weight:bold;
+}
+
+.modal-body input{
+
+    padding:12px;
+
+    border:1px solid #CCC;
+
+    border-radius:8px;
+
+    font-size:16px;
+}
+
+/* Rodapé */
+
+.modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:10px;
+}
+
+.modal-footer button{
+
+    padding:12px 20px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-size:15px;
+}
+
+.btnCancelar{
+
+    background:#dc3545;
+
+    color:white;
+}
+
+.btnSalvar{
+
+    background:#2563eb;
+
+    color:white;
+}
+
+.btnSalvar:hover{
+
+    background:#1d4ed8;
+}

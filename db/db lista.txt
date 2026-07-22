@@ -25,6 +25,20 @@ ativo BOOLEAN DEFAULT 1,
 vezes_sorteado INTEGER DEFAULT 0
 );
 
+CREATE TABLE restaurante(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+nome TEXT NOT NULL,
+ativo BOOLEAN DEFAULT 1,
+vezes_sorteado INTEGER DEFAULT 0
+);
+
+CREATE TABLE historico (
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+data_sorteio DATETIME DEFAULT CURRENT_TIMESTAMP,
+categoria TEXT NOT NULL,
+resultado TEXT NOT NULL
+);
+
 Como funciona o sorteio
 
 SELECT *
