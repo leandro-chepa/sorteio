@@ -1,0 +1,42 @@
+Tabela Filme
+
+CREATE TABLE filmes(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+nome TEXT NOT NULL,
+ativo BOOLEAN DEFAULT 1,
+vezes_sorteado INTEGER DEFAULT 0
+);
+
+Tabela Comidas
+
+CREATE TABLE comidas(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+nome TEXT NOT NULL,
+ativo BOOLEAN DEFAULT 1,
+vezes_sorteado INTEGER DEFAULT 0
+);
+
+Tabela Lugares
+
+CREATE TABLE lugares(
+id INTEGER PRIMARY KEY AUTOINCREMENT,
+nome TEXT NOT NULL,
+ativo BOOLEAN DEFAULT 1,
+vezes_sorteado INTEGER DEFAULT 0
+);
+
+Como funciona o sorteio
+
+SELECT *
+FROM filmes
+WHERE ativo = 1
+ORDER BY RANDOM()
+LIMIT 1;
+
+Depois do sorteio:
+
+UPDATE filmes
+SET
+ativo = 0,
+vezes_sorteado = vezes_sorteado + 1
+WHERE id = ?;
