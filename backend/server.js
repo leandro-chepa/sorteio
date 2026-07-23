@@ -10,8 +10,10 @@ app.use(express.json());
 
 // Rotas
 const itensRoutes = require("./routes/itensRoutes");
+const sorteioRoutes = require("./routes/sorteioRoutes");
 
 app.use("/api/itens", itensRoutes);
+app.use("/api/sorteio", sorteioRoutes);
 
 // Rota inicial
 app.get("/", (req, res) => {
