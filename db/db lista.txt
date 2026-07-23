@@ -24,3 +24,12 @@ CREATE TABLE historico (
         FOREIGN KEY (item_id)
         REFERENCES itens(id)
 );
+
+
+PORT=3000
+
+DB_SERVER=localhost
+DB_PORT=1433
+DB_DATABASE=SORTEADOR
+DB_USER=sorteador_api
+DB_PASSWORD=Sorteador@2026

@@ -37,7 +37,82 @@ async function buscarPorId(id) {
     }
 }
 
+// INSERIR
+async function inserirItem(item) {
+    try {
+
+        await sql.connect(config);
+
+        await sql.query`
+            INSERT INTO itens
+            (
+                categoria,
+                nome
+            )
+            VALUES
+            (
+                ${item.categoria},
+                ${item.nome}
+            )
+        `;
+
+    } catch (erro) {
+        throw erro;
+    }
+}
+
+// ATUALIZAR
+async function atualizarItem(id, item) {
+
+    try {
+
+        await sql.connect(config);
+
+        await sql.query`
+            UPDATE itens
+            SET
+
+                categoria = ${item.categoria},
+                nome = ${item.nome},
+                ativo = ${item.ativo}
+
+            WHERE id = ${id}
+        `;
+
+    } catch (erro) {
+        throw erro;
+    }
+
+}
+
+// EXCLUIR
+async function excluirItem(id) {
+
+    try {
+
+        await sql.connect(config);
+
+        await sql.query`
+            DELETE FROM itens
+            WHERE id = ${id}
+        `;
+
+    } catch (erro) {
+        throw erro;
+    }
+
+}
+
 module.exports = {
+
     listarItens,
-    buscarPorId
+
+    buscarPorId,
+
+    inserirItem,
+
+    atualizarItem,
+
+    excluirItem
+
 };

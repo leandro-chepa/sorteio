@@ -17,7 +17,7 @@ function fecharModal(){
     document.getElementById("modalCadastro").style.display = "none";
 }
 
-function salvarCadastro(){
+async function salvarCadastro(){
 
     const nome = document.getElementById("txtNome").value.trim();
 
@@ -28,10 +28,32 @@ function salvarCadastro(){
         return;
     }
 
-    console.log("Categoria:", categoriaAtual);
-    console.log("Nome:", nome);
+    try{
 
-    fecharModal();
+        const retorno = await cadastrarItem(categoriaAtual, nome);
+
+        if(retorno.sucesso){
+
+            alert(retorno.mensagem);
+
+            fecharModal();
+
+            carregarItens();
+
+        }else{
+
+            alert("Erro ao cadastrar.");
+
+        }
+
+    }catch(erro){
+
+        console.error(erro);
+
+        alert("Erro ao conectar com a API.");
+
+    }
+
 }
 
 window.onclick = function(event){
