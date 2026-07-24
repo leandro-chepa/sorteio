@@ -2,45 +2,77 @@ const { sql, config } = require("../config/database");
 
 async function sortear(categoria) {
 
-    const pool = await sql.connect(config);
+    try {
 
-    // Buscar um item aleatório
-    const resultado = await pool.request()
+        const pool = await sql.connect(config);
 
-        .input("categoria", sql.VarChar, categoria)
+        // Buscar um item aleatório
+        const resultado = await pool.request()
 
-        .query(`
-            SELECT TOP 1
-                id,
-                categoria,
-                nome
-            FROM itens
-            WHERE categoria = @categoria
-              AND ativo = 1
-              AND sorteado = 0
-            ORDER BY NEWID()
-        `);
+            .input("categoria", sql.VarChar, categoria)
 
-    if (resultado.recordset.length === 0) {
+            .query(`
+                SELECT TOP 1
+                    id,
+                    categoria,
+                    nome
+                FROM itens
+                WHERE categoria = @categoria
+                  AND ativo = 1
+                  AND sorteado = 0
+                ORDER BY NEWID()
+            `);
 
-        return null;
+        if (resultado.recordset.length === 0) {
+
+            return null;
+
+        }
+
+        const item = resultado.recordset[0];
+
+        // Marcar como sorteado
+        await pool.request()
+
+            .input("id", sql.Int, item.id)
+
+            .query(`
+                UPDATE itens
+                   SET sorteado = 1
+                 WHERE id = @id
+            `);
+
+        // Gravar histórico
+        await pool.request()
+
+            .input("item_id", sql.Int, item.id)
+            .input("categoria", sql.VarChar, item.categoria)
+            .input("resultado", sql.VarChar, item.nome)
+
+            .query(`
+                INSERT INTO historico
+                (
+                    item_id,
+                    categoria,
+                    resultado
+                )
+                VALUES
+                (
+                    @item_id,
+                    @categoria,
+                    @resultado
+                )
+            `);
+
+        return item;
+
+    } catch (erro) {
+
+        console.error("Erro ao realizar sorteio:", erro);
+
+        throw erro;
 
     }
-
-    const item = resultado.recordset[0];
-
-    // Marcar como sorteado
-    await pool.request()
-
-        .input("id", sql.Int, item.id)
-
-        .query(`
-            UPDATE itens
-               SET sorteado = 1
-             WHERE id = @id
-        `);
-
-    return item;
 
 }
 

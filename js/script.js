@@ -1,91 +1,179 @@
-const filmes = [
-    "Vingadores",
-    "Interestelar",
-    "Shrek",
-    "John Wick",
-    "Toy Story",
-    "Batman",
-    "Jurassic Park",
-    "Avatar"
-];
+async function sortearFilme() {
 
-const comidas = [
-    "Pizza",
-    "Hambúrguer",
-    "Sushi",
-    "Lasanha",
-    "Churrasco",
-    "Pastel",
-    "Yakisoba",
-    "Açaí"
-];
+    try {
 
-const lugares = [
-    "Cinema",
-    "Parque",
-    "Shopping",
-    "Praia",
-    "Museu",
-    "Kartódromo",
-    "Restaurante",
-    "Casa de amigos"
-];
+        const resposta = await fetch("http://localhost:3000/api/sorteio/Filme");
 
-const restaurantes = [
-    "Pizzaria",
-    "Hambúrgueria",
-    "Sushi Bar",
-    "Restaurante Italiano",
-    "Churrascaria",
-    "Pastelaria",
-    "Yakisoba House",
-    "Açaí Delícia"
-];
+        const resultado = await resposta.json();
 
-function aleatorio(lista){
+        if (!resultado.sucesso) {
 
-    return lista[Math.floor(Math.random()*lista.length)];
+            alert(resultado.mensagem);
+            return;
+
+        }
+
+        document.getElementById("filme").innerHTML =
+            "🎬 " + resultado.dados.nome;
+
+        await carregarHistorico();
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        alert("Erro ao conectar com a API.");
+
+    }
+    
+}
+
+async function sortearComida() {
+
+    try {
+
+        const resposta = await fetch("http://localhost:3000/api/sorteio/Comida");
+
+        const resultado = await resposta.json();
+
+        if (!resultado.sucesso) {
+
+            alert(resultado.mensagem);
+            return;
+
+        }
+
+        document.getElementById("comida").innerHTML =
+            "🍕 " + resultado.dados.nome;
+
+        await carregarHistorico();
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        alert("Erro ao conectar com a API.");
+
+    }
 
 }
 
-function sortearFilme(){
+async function sortearLugar() {
 
-    document.getElementById("filme").innerHTML =
-        "🎬 " + aleatorio(filmes);
+    try {
 
-}
+        const resposta = await fetch("http://localhost:3000/api/sorteio/Lugar");
 
-function sortearComida(){
+        const resultado = await resposta.json();
 
-    document.getElementById("comida").innerHTML =
-        "🍕 " + aleatorio(comidas);
+        if (!resultado.sucesso) {
 
-}
+            alert(resultado.mensagem);
+            return;
 
-function sortearLugar(){
+        }
 
-    document.getElementById("lugar").innerHTML =
-        "📍 " + aleatorio(lugares);
+        document.getElementById("lugar").innerHTML =
+            "📍 " + resultado.dados.nome;
 
-}
+        await carregarHistorico();
 
-function sortearRestaurante(){
+    } catch (erro) {
 
-    document.getElementById("restaurante").innerHTML =
-        "🍽️ " + aleatorio(restaurante);
+        console.error(erro);
 
-}
+        alert("Erro ao conectar com a API.");
 
-function sortearSerie(){
-
-    document.getElementById("serie").innerHTML =
-        "📺 " + aleatorio(seriess);
+    }
 
 }
 
-function sortearLivro(){
+async function sortearRestaurante() {
 
-    document.getElementById("livro").innerHTML =
-        "📚 " + aleatorio(livros);
+    try {
+
+        const resposta = await fetch("http://localhost:3000/api/sorteio/Restaurante");
+
+        const resultado = await resposta.json();
+
+        if (!resultado.sucesso) {
+
+            alert(resultado.mensagem);
+            return;
+
+        }
+
+        document.getElementById("restaurante").innerHTML =
+            "🍽️ " + resultado.dados.nome;
+
+        await carregarHistorico();
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        alert("Erro ao conectar com a API.");
+
+    }
+
+}
+
+async function sortearSerie() {
+
+    try {
+
+        const resposta = await fetch("http://localhost:3000/api/sorteio/Serie");
+
+        const resultado = await resposta.json();
+
+        if (!resultado.sucesso) {
+
+            alert(resultado.mensagem);
+            return;
+
+        }
+
+        document.getElementById("serie").innerHTML =
+            "📺 " + resultado.dados.nome;
+
+        await carregarHistorico();
+        
+    } catch (erro) {
+
+        console.error(erro);
+
+        alert("Erro ao conectar com a API.");
+
+    }
+
+}
+
+async function sortearLivro() {
+
+    try {
+
+        const resposta = await fetch("http://localhost:3000/api/sorteio/Livro");
+
+        const resultado = await resposta.json();
+
+        if (!resultado.sucesso) {
+
+            alert(resultado.mensagem);
+            return;
+
+        }
+
+        document.getElementById("livro").innerHTML =
+            "📚 " + resultado.dados.nome;
+
+        await carregarHistorico();
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        alert("Erro ao conectar com a API.");
+
+    }
 
 }

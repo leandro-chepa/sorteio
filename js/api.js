@@ -52,3 +52,26 @@ async function cadastrarItem(categoria, nome) {
     }
 
 }
+
+// =======================
+// LISTAR HISTÓRICO
+// =======================
+async function listarHistorico() {
+
+    try {
+
+        const resposta = await fetch(`${API}/historico`);
+
+        const dados = await resposta.json();
+
+        return dados.dados;
+
+    } catch (erro) {
+
+        console.error(erro);
+
+        return [];
+
+    }
+
+}

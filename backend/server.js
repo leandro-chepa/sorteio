@@ -2,11 +2,13 @@ require("dotenv").config();
 
 const express = require("express");
 const cors = require("cors");
+const historicoRoutes = require("./routes/historicoRoutes");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/historico", historicoRoutes);
 
 // Rotas
 const itensRoutes = require("./routes/itensRoutes");
